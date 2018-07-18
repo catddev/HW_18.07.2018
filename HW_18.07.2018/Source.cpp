@@ -109,10 +109,15 @@ int main()
 					if (a[i][j] == 0) zero++;
 					else one++;
 
-					if (one > n*n/3)
+					// если надо строгое соотношене 2:1
+					if (one > n*n/3) 
 						if (a[i][j] == 1) a[i][j] = 0;
-						else if (zero > n*n/3*2)
-							if (a[i][j] == 0) a[i][j] = 1;
+					else if (zero > n*n/3*2)
+						if (a[i][j] == 0) a[i][j] = 1;
+
+					// если приблизительное, то:
+					// a[i][j] = rand() % 3;
+					// if (a[i][j] == 2) a[i][j] = 0;
 
 					cout << right << setw(3) << a[i][j] << " ";
 				}
