@@ -109,21 +109,36 @@ int main()
 					if (a[i][j] == 0) zero++;
 					else one++;
 
-					// если надо строгое соотношене 2:1
-					if (one > n*n/3) 
-						if (a[i][j] == 1) a[i][j] = 0;
-					else if (zero > n*n/3*2)
-						if (a[i][j] == 0) a[i][j] = 1;
-
-					// если приблизительное, то:
-					// a[i][j] = rand() % 3;
-					// if (a[i][j] == 2) a[i][j] = 0;
-
 					cout << right << setw(3) << a[i][j] << " ";
 				}
 				cout << endl;
 			}
-			cout << endl << endl;
+			cout << "нулей: " << zero << endl << "единиц: " << one << endl;
+			
+			while (one > (n*n) / 3)
+			{
+				i = rand() % 8;
+				j = rand() % 8;
+				if (a[i][j] == 1)
+				{
+					a[i][j] = 0;
+					one--;
+				}
+			}
+
+			one = 0;
+			zero = 0;
+			for (i = 0; i < n; i++)
+			{
+				for (j = 0; j < n; j++)
+				{
+					if (a[i][j] == 0) zero++;
+					else one++;
+					cout << right << setw(3) << a[i][j] << " ";
+				}
+				cout << endl;
+			}
+			cout << "нулей: " << zero << endl << "единиц: " << one << endl << endl;
 		}
 		break;
 		default:
